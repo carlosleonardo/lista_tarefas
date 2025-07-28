@@ -4,7 +4,6 @@
 
 #include "ServicoTarefas.h"
 
-#include <algorithm>
 #include <optional>
 #include <stdexcept>
 
