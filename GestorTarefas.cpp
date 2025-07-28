@@ -55,7 +55,7 @@ void GestorTarefas::verificaExistencia(int &id) const {
 }
 
 void GestorTarefas::removerTarefa() const {
-    int id;
+    int id = 0;
     while (id < 1) {
         fmt::print("Digite o ID da tarefa para remover: ");
         std::cin >> id;
@@ -68,7 +68,7 @@ void GestorTarefas::removerTarefa() const {
 }
 
 void GestorTarefas::alterarTarefa() const {
-    int id;
+    int id = 0;
     while (id < 1) {
         fmt::print("Digite o ID da tarefa para alterar: ");
         std::cin >> id;
