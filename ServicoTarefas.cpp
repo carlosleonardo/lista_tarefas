@@ -38,7 +38,7 @@ void ServicoTarefas::alterar(int id, const std::string &titulo) {
     }
 }
 
-std::vector<Tarefa> ServicoTarefas::getTarefas() {
+std::vector<Tarefa> ServicoTarefas::obterTarefas() {
     return tarefas;
 }
 

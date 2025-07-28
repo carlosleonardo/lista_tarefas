@@ -23,7 +23,7 @@ public:
 
     void alterar(int id, const std::string &titulo);
 
-    std::vector<Tarefa> getTarefas();
+    std::vector<Tarefa> obterTarefas();
 
     [[nodiscard]] std::optional<Tarefa> obterTarefaPorId(int id) const;
 };

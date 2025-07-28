@@ -23,20 +23,20 @@ void GestorTarefas::adicionarTarefa() {
 }
 
 void GestorTarefas::listarTarefas() const {
-    const auto tarefas = servicoTarefas->getTarefas();
+    const auto tarefas = servicoTarefas->obterTarefas();
     if (tarefas.empty()) {
         fmt::print("Nenhuma tarefa encontrada.\n");
         return;
     }
     fmt::print("Lista de Tarefas:\n");
-    for (const auto &tarefa: tarefas) {
+    for (const auto &[id, titulo, finalizada]: tarefas) {
         fmt::print("ID: {}, Título: '{}', Finalizada: {}\n",
-                   tarefa.id, tarefa.titulo, tarefa.finalizada ? "Sim" : "Não");
+                   id, titulo, finalizada ? "Sim" : "Não");
     }
 }
 
 void GestorTarefas::alternarTarefaFinalizada() const {
-    int id;
+    int id = 0;
     while (id < 1) {
         fmt::print("Digite o ID da tarefa para alternar o status de finalização: ");
         std::cin >> id;
