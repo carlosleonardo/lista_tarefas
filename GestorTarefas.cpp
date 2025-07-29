@@ -84,3 +84,14 @@ void GestorTarefas::alterarTarefa() const {
     servicoTarefas->alterar(id, novoTitulo);
     fmt::print("Tarefa com ID {} alterada para '{}'.\n", id, novoTitulo);
 }
+
+void GestorTarefas::salvarTarefas() const {
+    servicoTarefas->salvarTarefas();
+    fmt::print("Tarefas salvas com sucesso!\n");
+}
+
+void GestorTarefas::carregarTarefas() {
+    servicoTarefas->carregarTarefas();
+    proximoId = servicoTarefas->obterTarefas().size() + 1; // Reseta o ID para o próximo uso
+    fmt::print("Tarefas carregadas com sucesso!\n");
+}

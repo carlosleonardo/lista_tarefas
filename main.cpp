@@ -7,6 +7,7 @@ int main() {
     fmt::print("Lista de Tarefas!\n");
     bool sair = false;
     GestorTarefas gestor;
+    gestor.carregarTarefas();
     while (!sair) {
         fmt::print("Escolha uma opção:\n");
         fmt::print("1. Adicionar Tarefa\n");
@@ -41,6 +42,7 @@ int main() {
             }
             case 0:
                 sair = true;
+                gestor.salvarTarefas();
                 fmt::print("Saindo do programa...\n");
                 break;
             default:

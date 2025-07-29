@@ -33,6 +33,10 @@ public:
     void removerTarefa() const;
 
     void alterarTarefa() const;
+
+    void salvarTarefas() const;
+
+    void carregarTarefas();
 };
 
 

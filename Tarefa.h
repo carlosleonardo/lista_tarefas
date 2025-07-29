@@ -5,12 +5,13 @@
 #ifndef TAREFA_H
 #define TAREFA_H
 #include <string>
-
+#include <nlohmann/json.hpp>
 
 struct Tarefa {
 	int id;
 	std::string titulo;
 	bool finalizada;
+	NLOHMANN_DEFINE_TYPE_INTRUSIVE(Tarefa, id, titulo, finalizada)
 };
 
 

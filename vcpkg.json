@@ -5,5 +5,8 @@
   "dependencies" : [ {
     "name" : "fmt",
     "version>=" : "11.0.2#1"
+  }, {
+    "name" : "nlohmann-json",
+    "version>=" : "3.12.0"
   } ]
 }

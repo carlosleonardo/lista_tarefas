@@ -26,6 +26,10 @@ public:
     std::vector<Tarefa> obterTarefas();
 
     [[nodiscard]] std::optional<Tarefa> obterTarefaPorId(int id) const;
+
+    void salvarTarefas();
+
+    void carregarTarefas();
 };
 
 

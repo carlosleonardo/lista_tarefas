@@ -4,8 +4,8 @@
 
 #include "ServicoTarefas.h"
 
+#include <fstream>
 #include <optional>
-#include <stdexcept>
 
 void ServicoTarefas::adicionar(int id, const std::string &titulo) {
     Tarefa tarefa;
@@ -49,4 +49,23 @@ std::optional<Tarefa> ServicoTarefas::obterTarefaPorId(int id) const {
         }
     }
     return std::nullopt;
+}
+
+void ServicoTarefas::salvarTarefas() {
+    nlohmann::json json = tarefas;
+    std::ofstream arquivo("tarefas.json");
+    if (arquivo.is_open()) {
+        arquivo << json.dump(4); // Formata o JSON com 4 espaços de indentação
+        arquivo.close();
+    }
+}
+
+void ServicoTarefas::carregarTarefas() {
+    nlohmann::json json;
+    std::ifstream arquivo("tarefas.json");
+    if (arquivo.is_open()) {
+        arquivo >> json;
+        tarefas = json.get<std::vector<Tarefa> >(); // Converte o JSON de volta
+        arquivo.close();
+    }
 }

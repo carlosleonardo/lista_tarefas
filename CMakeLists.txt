@@ -9,3 +9,5 @@ add_executable(lista_tarefas main.cpp
         Tarefa.cpp)
 find_package(fmt CONFIG REQUIRED)
 target_link_libraries(lista_tarefas PRIVATE fmt::fmt)
+find_package(nlohmann_json CONFIG REQUIRED)
+target_link_libraries(lista_tarefas PRIVATE nlohmann_json::nlohmann_json)
