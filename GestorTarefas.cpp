@@ -7,6 +7,8 @@
 #include <iostream>
 #include <fmt/printf.h>
 
+#include "Util.h"
+
 GestorTarefas::GestorTarefas() {
     servicoTarefas = std::make_unique<ServicoTarefas>();
     proximoId = 1; // Inicia o ID das tarefas a partir de 1
@@ -19,6 +21,7 @@ void GestorTarefas::adicionarTarefa() {
         std::getline(std::cin, titulo);
     }
     servicoTarefas->adicionar(proximoId++, titulo);
+    titulo = cp1252_to_utf8(titulo); // Converte o título de CP1252 para UTF-8
     fmt::print("Tarefa '{}' adicionada com sucesso!\n", titulo);
 }
 
@@ -31,7 +34,7 @@ void GestorTarefas::listarTarefas() const {
     fmt::print("Lista de Tarefas:\n");
     for (const auto &[id, titulo, finalizada]: tarefas) {
         fmt::print("ID: {}, Título: '{}', Finalizada: {}\n",
-                   id, titulo, finalizada ? "Sim" : "Não");
+                   id, cp1252_to_utf8(titulo), finalizada ? "Sim" : "Não");
     }
 }
 
@@ -82,6 +85,7 @@ void GestorTarefas::alterarTarefa() const {
         std::getline(std::cin, novoTitulo);
     }
     servicoTarefas->alterar(id, novoTitulo);
+    novoTitulo = cp1252_to_utf8(novoTitulo); // Converte o título de CP1252 para UTF-8
     fmt::print("Tarefa com ID {} alterada para '{}'.\n", id, novoTitulo);
 }
 
