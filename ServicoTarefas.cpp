@@ -55,7 +55,9 @@ void ServicoTarefas::salvarTarefas() {
     nlohmann::json json = tarefas;
     std::ofstream arquivo("tarefas.json");
     if (arquivo.is_open()) {
-        arquivo << json.dump(4); // Formata o JSON com 4 espaços de indentação
+        arquivo.imbue(std::locale(""));
+        arquivo << json.dump(4, ' ', false, nlohmann::json::error_handler_t::replace);
+        // Formata o JSON com 4 espaços de indentação
         arquivo.close();
     }
 }
@@ -63,7 +65,9 @@ void ServicoTarefas::salvarTarefas() {
 void ServicoTarefas::carregarTarefas() {
     nlohmann::json json;
     std::ifstream arquivo("tarefas.json");
+    tarefas.clear(); // Limpa a lista de tarefas antes de carregar
     if (arquivo.is_open()) {
+        arquivo.imbue(std::locale(""));
         arquivo >> json;
         tarefas = json.get<std::vector<Tarefa> >(); // Converte o JSON de volta
         arquivo.close();

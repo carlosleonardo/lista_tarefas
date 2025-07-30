@@ -90,12 +90,23 @@ void GestorTarefas::alterarTarefa() const {
 }
 
 void GestorTarefas::salvarTarefas() const {
-    servicoTarefas->salvarTarefas();
+    try {
+        servicoTarefas->salvarTarefas();
+    } catch (const std::exception &e) {
+        fmt::print("Erro ao salvar tarefas: {}\n", e.what());
+        return;
+    }
     fmt::print("Tarefas salvas com sucesso!\n");
 }
 
 void GestorTarefas::carregarTarefas() {
-    servicoTarefas->carregarTarefas();
+    try {
+        servicoTarefas->carregarTarefas();
+    } catch (const std::exception &e) {
+        fmt::print("Erro ao carregar tarefas: {}\n", e.what());
+        return;
+    }
+    // Reseta o ID para o próximo uso
     proximoId = servicoTarefas->obterTarefas().size() + 1; // Reseta o ID para o próximo uso
     fmt::print("Tarefas carregadas com sucesso!\n");
 }
