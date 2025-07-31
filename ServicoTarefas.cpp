@@ -43,12 +43,14 @@ std::vector<Tarefa> ServicoTarefas::obterTarefas() {
 }
 
 std::optional<Tarefa> ServicoTarefas::obterTarefaPorId(int id) const {
-    for (const auto &tarefa: tarefas) {
-        if (tarefa.id == id) {
-            return tarefa;
-        }
+    auto tarefa = tarefas | std::ranges::views::filter([id](const Tarefa &t)-> bool {
+        return t.id == id;
+    });
+
+    if (tarefa.empty()) {
+        return std::nullopt; // Retorna std::nullopt se a tarefa não for encontrada
     }
-    return std::nullopt;
+    return tarefa.front(); // Retorna a primeira tarefa encontrada
 }
 
 void ServicoTarefas::salvarTarefas() {
