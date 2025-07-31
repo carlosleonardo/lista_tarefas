@@ -17,7 +17,7 @@
 class GestorTarefas {
 private:
     std::unique_ptr<ServicoTarefas> servicoTarefas; ///< Pointer to the service that manages tasks.
-    int proximoId{}; ///< The next available ID for a new task.
+    size_t proximoId{}; ///< The next available ID for a new task.
     void verificaExistencia(int &id) const;
 
 public:
