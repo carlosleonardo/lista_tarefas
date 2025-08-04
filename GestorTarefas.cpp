@@ -21,7 +21,7 @@ void GestorTarefas::adicionarTarefa() {
         std::getline(std::cin, titulo);
     }
     servicoTarefas->adicionar(proximoId++, titulo);
-    titulo = cp1252_to_utf8(titulo); // Converte o título de CP1252 para UTF-8
+    //titulo = cp1252_to_utf8(titulo); // Converte o título de CP1252 para UTF-8
     fmt::print("Tarefa '{}' adicionada com sucesso!\n", titulo);
 }
 
@@ -34,7 +34,7 @@ void GestorTarefas::listarTarefas() const {
     fmt::print("Lista de Tarefas:\n");
     for (const auto &[id, titulo, finalizada]: tarefas) {
         fmt::print("ID: {}, Título: '{}', Finalizada: {}\n",
-                   id, cp1252_to_utf8(titulo), finalizada ? "Sim" : "Não");
+                   id, titulo, finalizada ? "Sim" : "Não");
     }
 }
 
@@ -85,7 +85,7 @@ void GestorTarefas::alterarTarefa() const {
         std::getline(std::cin, novoTitulo);
     }
     servicoTarefas->alterar(id, novoTitulo);
-    novoTitulo = cp1252_to_utf8(novoTitulo); // Converte o título de CP1252 para UTF-8
+    //novoTitulo = cp1252_to_utf8(novoTitulo); // Converte o título de CP1252 para UTF-8
     fmt::print("Tarefa com ID {} alterada para '{}'.\n", id, novoTitulo);
 }
 
