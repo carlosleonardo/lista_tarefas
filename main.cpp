@@ -1,9 +1,17 @@
 #include <iostream>
 #include <fmt/printf.h>
-
+#ifdef WIN32
+#include <windows.h>
+#endif
+#include <locale>
 #include "GestorTarefas.h"
 
 int main() {
+    std::locale::global(std::locale(""));
+#ifdef WIN32
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+#endif
     fmt::print("Lista de Tarefas!\n");
     bool sair = false;
     GestorTarefas gestor;
