@@ -20,7 +20,7 @@ void GestorTarefas::adicionarTarefa() {
         fmt::print("Digite o título da tarefa: ");
         std::getline(std::cin, titulo);
     }
-    servicoTarefas->adicionar(proximoId++, titulo);
+    servicoTarefas->adicionar(static_cast<int>(proximoId++), titulo);
     fmt::print("Tarefa '{}' adicionada com sucesso!\n", titulo);
 }
 
