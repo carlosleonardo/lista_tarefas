@@ -31,8 +31,9 @@ void GestorTarefas::listarTarefas() const {
         return;
     }
     fmt::print("Lista de Tarefas:\n");
+    fmt::print("{:<5}{:<30}{:<10}\n", "ID", "Título", "Finalizada");
     for (const auto &[id, titulo, finalizada]: tarefas) {
-        fmt::print("ID: {}, Título: '{}', Finalizada: {}\n",
+        fmt::print("{:<5}{:<30}{:<10}\n",
                    id, titulo, finalizada ? "Sim" : "Não");
     }
 }
@@ -104,7 +105,11 @@ void GestorTarefas::carregarTarefas() {
         fmt::print("Erro ao carregar tarefas: {}\n", e.what());
         return;
     }
-    // Reseta o ID para o próximo uso
-    proximoId = servicoTarefas->obterTarefas().size() + 1; // Reseta o ID para o próximo uso
+    // Reseta o ID para o próximo uso ou o maior ID existente
+    if (!servicoTarefas->obterTarefas().empty()) {
+        proximoId = servicoTarefas->obterTarefas().back().id + 1;
+    } else {
+        proximoId = servicoTarefas->obterTarefas().size() + 1; // Reseta o ID para o próximo uso
+    }
     fmt::print("Tarefas carregadas com sucesso!\n");
 }
