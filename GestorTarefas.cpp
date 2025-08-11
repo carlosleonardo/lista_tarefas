@@ -31,8 +31,9 @@ void GestorTarefas::listarTarefas() const {
         return;
     }
     fmt::print("Lista de Tarefas:\n");
+    fmt::print("{:<5}{:<30}{:<10}\n", "ID", "Título", "Finalizada");
     for (const auto &[id, titulo, finalizada]: tarefas) {
-        fmt::print("ID: {}, Título: '{}', Finalizada: {}\n",
+        fmt::print("{:<5}{:<30}{:<10}\n",
                    id, titulo, finalizada ? "Sim" : "Não");
     }
 }
