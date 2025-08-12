@@ -27,7 +27,13 @@ int main() {
         int opcao;
         fmt::print("Digite sua opção: ");
         std::cin >> opcao;
-        std::cin.ignore();
+        //std::cin.ignore();
+        if (!std::cin.good()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            fmt::print("Entrada inválida! Por favor, digite um número.\n");
+            continue;
+        }
         switch (opcao) {
             case 1: {
                 gestor.adicionarTarefa();

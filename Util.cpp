@@ -12,6 +12,7 @@
  * This file contains the implementation of utility functions used in the application.
  */
 std::string cp1252_to_utf8(const std::string &input) {
+#ifdef WIN32
     // Etapa 1: CP1252 → UTF-16 (wstring)
     int wide_len = MultiByteToWideChar(1252, 0, input.c_str(), -1, nullptr, 0);
     std::wstring wide_str(wide_len, 0);
@@ -25,4 +26,7 @@ std::string cp1252_to_utf8(const std::string &input) {
     // Remover terminador nulo
     utf8_str.pop_back();
     return utf8_str;
+#else
+    return input; // Em sistemas não-Windows, retorna a string original
+#endif
 }
