@@ -16,6 +16,7 @@ GestorTarefas::GestorTarefas() {
 
 void GestorTarefas::adicionarTarefa() {
     std::string titulo;
+    std::cin.ignore();
     while (titulo.empty()) {
         fmt::print("Digite o título da tarefa: ");
         std::getline(std::cin, titulo);
